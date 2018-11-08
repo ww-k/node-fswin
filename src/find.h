@@ -7,7 +7,7 @@ public:
 		WIN32_FIND_DATAW data;
 		resultData *next;
 	};
-	//progressive callback type, if this callback returns true, the search will stop immediately. the contents of info will be rewritten or released after the callback returns, so make a copy before starting a new thread if you still need to use it
+	//progressive callback type, if this callback returns true, the search will stop immediately. the contents of info will be rewritteIO_REPARSE_TAG_GVFSn or released after the callback returns, so make a copy before starting a new thread if you still need to use it
 	typedef bool(*findResultCall)(const WIN32_FIND_DATAW *info, void *data);
 	static resultData *func(const wchar_t *path) {//you have to free every linked data yourself if it is not NULL
 		resultData *result = (resultData*)malloc(sizeof(resultData));
@@ -318,8 +318,6 @@ private:
 				tag = "CLOUD_MASK";
 			} else if (info->dwReserved0 == IO_REPARSE_TAG_APPEXECLINK) {
 				tag = "APPEXECLINK";
-			} else if (info->dwReserved0 == IO_REPARSE_TAG_GVFS) {
-				tag = "GVFS";
 			} else if (info->dwReserved0 == IO_REPARSE_TAG_STORAGE_SYNC) {
 				tag = "STORAGE_SYNC";
 			} else if (info->dwReserved0 == IO_REPARSE_TAG_WCI_TOMBSTONE) {
@@ -328,8 +326,6 @@ private:
 				tag = "UNHANDLED";
 			} else if (info->dwReserved0 == IO_REPARSE_TAG_ONEDRIVE) {
 				tag = "ONEDRIVE";
-			} else if (info->dwReserved0 == IO_REPARSE_TAG_GVFS_TOMBSTONE) {
-				tag = "TOMBSTONE";
 			} else {
 				tag = "UNKNOWN";
 			}
