@@ -1,14 +1,14 @@
 {
-	"name": "fswin",
+	"name": "fswin-nwjs",
 	"version": "3.18.918",
-	"description": "nodejs fs extensions for windows",
+	"description": "nwjs fs extensions for windows",
 	"main": "index.js",
 	"engines": {
 		"node": ">= 8.0"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/xxoo/node-fswin.git"
+		"url": "https://github.com/ww-k/node-fswin"
 	},
 	"keywords": [
 		"native",

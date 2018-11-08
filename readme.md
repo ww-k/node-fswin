@@ -1,6 +1,10 @@
 Introduction
 ============
 
+just a fswin build for `nwjs 0.29.0` from [`fswin`](http://xxoo.github.com/node-fswin)
+
+may be support other nwjs versions.
+
 [`fswin`](http://xxoo.github.com/node-fswin) is a native [`node.js`](http://nodejs.org) add-on that works on windows.
 It has ported some platform specified filesystem APIs. And made them easy to use in javascript.
 
