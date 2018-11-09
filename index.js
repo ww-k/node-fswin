@@ -17,7 +17,15 @@ if (process.platform !== 'win32') {
         version = versions.node;
     }
     fswinModuleName = `fswin_${runtime}_${version}_${process.arch}.node`;
-    const fswin = require('./' + fswinModuleName);
 
-    module.exports = fswin;
+    try {
+        module.exports = require('./' + fswinModuleName);
+    } catch (e) {
+        if (e.code = 'MODULE_NOT_FOUND') {
+            console.warn(`not support this in ${runtime || 'node'} @ ${version}`);
+        } else {
+            console.error(e);
+        }
+        module.exports = null;
+    }
 }

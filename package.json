@@ -1,6 +1,6 @@
 {
 	"name": "fswin-nwjs",
-	"version": "4.0.0",
+	"version": "4.0.1",
 	"description": "nwjs fs extensions for windows",
 	"main": "index.js",
 	"engines": {
