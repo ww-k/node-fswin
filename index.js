@@ -13,7 +13,7 @@ if (process.platform !== 'win32') {
         runtime = 'electron';
         version = versions.electron;
     } else {
-        runtime = '';
+        runtime = 'node';
         version = versions.node;
     }
     fswinModuleName = `fswin_${runtime}_${version}_${process.arch}.node`;
@@ -21,8 +21,8 @@ if (process.platform !== 'win32') {
     try {
         module.exports = require('./' + fswinModuleName);
     } catch (e) {
-        if (e.code = 'MODULE_NOT_FOUND') {
-            console.warn(`not support this in ${runtime || 'node'} @ ${version}`);
+        if (e.code == 'MODULE_NOT_FOUND') {
+            console.warn(`not support this in ${runtime} @ ${version}`);
         } else {
             console.error(e);
         }
