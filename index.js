@@ -19,13 +19,22 @@ if (process.platform !== 'win32') {
     fswinModuleName = `fswin_${runtime}_${version}_${process.arch}.node`;
 
     try {
-        module.exports = require('./' + fswinModuleName);
+        module.exports = require(`./fswin_${runtime}_${version}_${process.arch}.node`);
     } catch (e) {
         if (e.code == 'MODULE_NOT_FOUND') {
-            console.warn(`not support this in ${runtime} @ ${version}`);
+            try {
+                module.exports = require(`./fswin_${runtime}_${process.arch}.node`);
+            } catch (e) {
+                if (e.code == 'MODULE_NOT_FOUND') {
+                    console.warn(`not support this in ${runtime} @ ${version}`);
+                } else {
+                    console.error(e);
+                }
+                module.exports = null;
+            }
         } else {
             console.error(e);
+            module.exports = null;
         }
-        module.exports = null;
     }
 }
